@@ -30,6 +30,8 @@ async function handler(req, res) {
   const apiToken = process.env.ELEVENLABS_API_TOKEN;
 
   const { name, audio_file_url, description, labels } = req.body
+  res.json(req.body);
+
 
   let readStream;
   try {
@@ -46,7 +48,6 @@ async function handler(req, res) {
   form.append('description', description || 'Voice Description');
   // form.append('labels', JSON.stringify(labels));
 
-  res.json(req.body);
 
   try {
 
