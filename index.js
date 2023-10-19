@@ -30,6 +30,7 @@ async function handler(req, res) {
   const apiToken = process.env.ELEVENLABS_API_TOKEN;
 
   const { name, audio_file_url, description, labels } = req.body
+  console.log(req.body)
   let readStream;
   try {
     // readStream = (audio_file_url.startsWith('https') ? https : http).get(audio_file_url);
