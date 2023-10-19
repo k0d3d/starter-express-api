@@ -63,7 +63,6 @@ async function handler(req, res) {
     res.end(JSON.stringify(data));
 
   } catch (error) {
-    console.log(error.message);
     res.statusCode = 500;
     res.end(JSON.stringify(error.message));
 
