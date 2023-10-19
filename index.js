@@ -5,6 +5,7 @@ import https from 'https';
 import got from 'got';
 import express from 'express'
 import FormData from 'form-data'
+import bodyParser from'body-parser'
 
 const app = express()
 
