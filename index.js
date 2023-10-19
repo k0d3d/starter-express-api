@@ -30,7 +30,7 @@ async function handler(req, res) {
   const apiToken = process.env.ELEVENLABS_API_TOKEN;
 
   const { name, audio_file_url, description, labels } = req.body
-  console.log(req.body)
+
   let readStream;
   try {
     // readStream = (audio_file_url.startsWith('https') ? https : http).get(audio_file_url);
@@ -46,6 +46,7 @@ async function handler(req, res) {
   form.append('description', description || 'Voice Description');
   // form.append('labels', JSON.stringify(labels));
 
+  res.json(req.body);
 
   try {
 
@@ -60,11 +61,11 @@ async function handler(req, res) {
     const data = response.data;
     
     res.statusCode = 200;
-    res.end(JSON.stringify(data));
+    res.json(data);
 
   } catch (error) {
     res.statusCode = 500;
-    res.end(JSON.stringify(error.message));
+    res.json(error.message);
 
   }
 
