@@ -1,18 +1,19 @@
-const express = require('express')
-const app = express()
+
 import axios from 'axios';
 import http from 'http';
 import https from 'https';
-// @ts-ignore
 import got from 'got';
+import express from 'express'
+import FormData from 'form-data'
 
-const FormData = require('form-data')
+const app = express()
+
 
 app.post('/', (req, res) => {
     handler(req, res)
 });
 
-function handler(req, res) {
+async function handler(req, res) {
 
   if (!process.env.ELEVENLABS_API_TOKEN) {
     throw new Error(
@@ -22,7 +23,7 @@ function handler(req, res) {
   const apiToken = process.env.ELEVENLABS_API_TOKEN;
 
   const { name, audio_file_url, description, labels } = req.body
-  let readStream: http.ClientRequest;
+  let readStream;
   try {
     // readStream = (audio_file_url.startsWith('https') ? https : http).get(audio_file_url);
     readStream = got.stream(audio_file_url);
